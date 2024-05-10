@@ -1,0 +1,25 @@
+# Compiled Object files
+*.o
+
+# Compiled Libraries
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Debug files
+*.dSYM/
+*.stackdump
+
+# Build Directories
+/build/
+bin/
+
+# IDE Directories and Files
+.vscode/
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
