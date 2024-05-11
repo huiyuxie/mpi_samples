@@ -5,19 +5,22 @@ MPICC = mpicc
 CFLAGS = -I/opt/homebrew/Cellar/open-mpi/5.0.3/include
 LDFLAGS = -L/opt/homebrew/Cellar/open-mpi/5.0.3/lib -lmpi -Wl,-ld_classic
 
-# Default target executable name (can be overridden)
-TARGET = mpi_program
+# Base name of the target
+BASE_NAME = mpi_helloBsend
+
+# Target executable name
+TARGET = $(BASE_NAME)
 
 # Source and object files
-SRCS = $(wildcard *.c)
-OBJS = $(SRCS:.c=.o)
+SRCS = $(BASE_NAME).c
+OBJS = $(BASE_NAME).o
 
 # Build all targets
 all: $(TARGET)
 
 # Link object files to create executable
 $(TARGET): $(OBJS)
-	$(MPICC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+	$(MPICC) -o $@ $(OBJS) $(LDFLAGS)
 
 # Compile source files to object files
 %.o: %.c
@@ -27,10 +30,9 @@ $(TARGET): $(OBJS)
 clean:
 	rm -f $(OBJS) $(TARGET)
 
-# Run program with 4 processes
+# Run program with specified number of processes
 run: $(TARGET)
 	mpirun -np 12 ./$(TARGET)
 
 # Declare phony targets
 .PHONY: all clean run
-
