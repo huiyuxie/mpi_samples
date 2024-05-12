@@ -6,7 +6,7 @@ CFLAGS = -I/opt/homebrew/Cellar/open-mpi/5.0.3/include
 LDFLAGS = -L/opt/homebrew/Cellar/open-mpi/5.0.3/lib -lmpi -Wl,-ld_classic
 
 # Base name of the target
-BASE_NAME = mpi_array
+BASE_NAME = mpi_mm
 
 # Target executable name
 TARGET = $(BASE_NAME)
