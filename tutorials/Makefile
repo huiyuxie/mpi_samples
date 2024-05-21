@@ -6,7 +6,7 @@ CFLAGS = -I/opt/homebrew/Cellar/open-mpi/5.0.3/include
 LDFLAGS = -L/opt/homebrew/Cellar/open-mpi/5.0.3/lib -lmpi -Wl,-ld_classic
 
 # Base name of the target
-BASE_NAME = mpi_contig
+BASE_NAME = mpi_group
 
 # Target executable name
 TARGET = $(BASE_NAME)
@@ -32,7 +32,7 @@ clean:
 
 # Run program with specified number of processes
 run: $(TARGET)
-	mpirun -np 4 ./$(TARGET)
+	mpirun -np 8 ./$(TARGET)
 
 # Declare phony targets
 .PHONY: all clean run
