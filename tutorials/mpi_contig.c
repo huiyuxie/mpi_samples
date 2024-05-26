@@ -34,8 +34,10 @@ int main(int argc, char *argv[]) {
         MPI_Send(&a[i][0], 1, rowtype, i, tag, MPI_COMM_WORLD);
     }
 
-    /* MPI_Recv(b, SIZE, MPI_FLOAT, source, tag, MPI_COMM_WORLD, &stat); */
-    MPI_Recv(b, 1, rowtype, source, tag, MPI_COMM_WORLD, &stat);
+    // compare with vector.c
+    MPI_Recv(b, SIZE, MPI_FLOAT, source, tag, MPI_COMM_WORLD, &stat);
+    // MPI_Recv(b, 1, rowtype, source, tag, MPI_COMM_WORLD, &stat);
+    // this works
     printf("rank= %d  b= %3.1f %3.1f %3.1f %3.1f\n", rank, b[0], b[1], b[2],
            b[3]);
   } else

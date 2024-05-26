@@ -33,7 +33,10 @@ int main(int argc, char *argv[]) {
         MPI_Send(&a[0][i], 1, columntype, i, tag, MPI_COMM_WORLD);
     }
 
+    // compare with contig.c
     MPI_Recv(b, SIZE, MPI_FLOAT, source, tag, MPI_COMM_WORLD, &stat);
+    // MPI_Recv(b, 1, columntype, source, tag, MPI_COMM_WORLD, &stat);
+    // this won't work
     printf("rank= %d  b= %3.1f %3.1f %3.1f %3.1f\n", rank, b[0], b[1], b[2],
            b[3]);
   } else

@@ -41,7 +41,8 @@ int main(int argc, char *argv[]) {
 
   /* Create new new communicator and then perform collective communications */
   MPI_Comm_create(MPI_COMM_WORLD, new_group, &new_comm);
-  MPI_Allreduce(&sendbuf, &recvbuf, 1, MPI_INT, MPI_SUM, new_comm);
+  MPI_Allreduce(&sendbuf, &recvbuf, 1, MPI_INT, MPI_SUM,
+                new_comm);  // compare with MPI_Reduce
 
   MPI_Group_rank(new_group, &new_rank);
   printf("rank= %d newrank= %d recvbuf= %d\n", rank, new_rank, recvbuf);
